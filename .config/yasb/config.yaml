@@ -51,12 +51,12 @@ bars:
         "cava",
         "media",
         "weather",
+        "language",
         "microphone",
         "volume",
         "cpu",
         "memory",
         "notifications",
-        "wallpapers",
         "power_menu"
         ]
 widgets:
@@ -72,6 +72,27 @@ widgets:
       system_menu: true
       power_menu: true
       blur: false
+  cava:
+    type: "yasb.cava.CavaWidget"
+    options:
+      bar_height: 12
+      min_bar_height: 0
+      gradient: 1
+      foreground: "#89b4fa"
+      gradient_color_1: '#74c7ec'
+      gradient_color_2: '#89b4fa'
+      gradient_color_3: '#cba6f7'
+      bars_number: 8
+      bar_spacing: 2
+      bar_width: 4
+      bar_type: "bars"
+      framerate: 60
+      hide_empty: true
+      container_padding:
+        top: 0
+        left: 8 
+        bottom: 0
+        right: 8
   media:
       type: "yasb.media.MediaWidget"
       options:
@@ -120,10 +141,10 @@ widgets:
     options:
       label: "<span>{icon}</span> {temp}"
       label_alt: "{location}: Min {min_temp}, Max {max_temp}, Humidity {humidity}"
-      api_key:  # Get your free API key from https://www.weatherapi.com/
+      api_key: "3bf4cf9a7c3f40d6b31174128242807" # Get your free API key from https://www.weatherapi.com/
       update_interval: 600
       hide_decimal: true
-      location:  # You can use "USA Los Angeles 90006" {COUNTRY CITY ZIP_CODE}, or just city.
+      location: "Philippines, Manila" # You can use "USA Los Angeles 90006" {COUNTRY CITY ZIP_CODE}, or just city.
       callbacks:
         on_left: "toggle_card"
       icons:
@@ -250,26 +271,6 @@ widgets:
           lazy_load_fadein: 400
           image_corner_radius: 20
           enable_cache: true
-  cava:
-    type: "yasb.cava.CavaWidget"
-    options:
-      bar_height: 12
-      min_bar_height: 0
-      gradient: 1
-      reverse: 0
-      foreground: "#89b4fa"
-      gradient_color_1: '#74c7ec'
-      gradient_color_2: '#89b4fa'
-      gradient_color_3: '#cba6f7'
-      bars_number: 8
-      bar_spacing: 2
-      bar_width: 4
-      hide_empty: true
-      container_padding:
-        top: 0
-        left: 8
-        bottom: 0
-        right: 8
   cpu:
     type: "yasb.cpu.CpuWidget"
     options:
@@ -411,3 +412,30 @@ widgets:
         color: "black"
         radius: 3
         offset: [ 1, 1 ]
+  language:
+    type: "yasb.language.LanguageWidget"
+    options:
+      label: "{lang[language_code]}-{lang[country_code]}"
+      label_alt: "{lang[full_name]}"
+      update_interval: 5
+      callbacks:
+        on_left: "toggle_menu"
+        on_middle: "do_nothing"
+        on_right: "toggle_label"
+      language_menu:
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "system"
+        alignment: "right"
+        direction: "down"
+        offset_top: 6
+        offset_left: 0
+        show_layout_icon: true
+        layout_icon: "\uf11c"
+      label_shadow:
+        enabled: true
+        color: "black"
+        radius: 3
+        offset: [ 1, 1 ]
+
